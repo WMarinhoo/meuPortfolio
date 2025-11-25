@@ -171,6 +171,7 @@ h1 {
     line-height: 1.25rem;
 }
 
+
 .contatos {
     padding: 6rem 2rem;
 }
@@ -240,6 +241,32 @@ h1 {
     background: radial-gradient(circle at 10% 20%, var(--primaria) 0%, transparent 20%), radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%), var(--maisEscuro);
 }
 
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Esconde a barra de rolagem */
+}
+
+.carousel-item {
+  min-width: 100%;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
+
+.carousel-item img {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
 @keyframes flutuar {
     0%, 100% {
         transform: translateY(0);
@@ -249,3 +276,6 @@ h1 {
         transform: translateY(-20px);
     }
 }
+
+
+
