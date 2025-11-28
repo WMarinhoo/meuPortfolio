@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>DownloadTech | Portfólio</title>
-    <link rel="shortcut icon" href="img/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    < <title>DownloadTech | Portfólio</title>
+        <link rel="shortcut icon" href="img/favicon.png" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </head>
 
 <body>
@@ -169,6 +169,11 @@
         </form>
     </section>
 
+    <!-- CONTADOR DE VISITANTES -->
+    <div style="text-align:center; margin:3rem 0; opacity:0.9;">
+        <i class="fas fa-eye" style="color:var(--primaria); margin-right:8px;"></i>
+        <strong id="visit-count" style="font-size:2rem; color:var(--primaria);">0</strong> visitas
+    </div>
 
     <footer class="rodape">
         <div class="redes-sociais" data-aos="fade-up" data-aos-delay="200">
@@ -388,8 +393,18 @@
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-    </script>
+        
+        // CONTADOR DE VISITANTES (CountAPI - grátis e sem cadastro)
+        fetch('https://api.countapi.xyz/hit/wendelmarinho-portfolio/visitas')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('visit-count').textContent = data.value.toLocaleString('pt-BR');
+            })
+            .catch(() => {
+                document.getElementById('visit-count').textContent = 'muitas';
+            });
 
+    </script>
 </body>
 
 </html>
