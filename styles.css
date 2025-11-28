@@ -196,8 +196,7 @@ h1 {
     min-height: 350px;
     display: flex;
     flex-direction: column;
-    object-fit: cover;
-    /* corta sem distorcer */
+    object-fit: cover; /* corta sem distorcer */
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     backdrop-filter: blur(5px);
