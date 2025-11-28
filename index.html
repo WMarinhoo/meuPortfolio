@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 </head>
 
 <body>
-    <div class="particulas"></div>
+    <div id="tsparticles"></div>
     <div class="logo-fixa">
         <img src="img/favicon.png" alt="Logo">
     </div>
@@ -41,7 +43,8 @@
         <h1 data-aos="fade-up" data-aos-delay="500">Wendel Marinho</h1>
         <p class="cabecalho-sub-titulo" data-aos="fade-up" data-aos-delay="700">🤖 Automação de websites</p>
         <p class="cabecalho-sub-titulo" data-aos="fade-up" data-aos-delay="800">🖥️ Montagem & Manutenção de PCs</p>
-        <p class="cabecalho-sub-titulo" data-aos="fade-up" data-aos-delay="900">🔧 Upgrades • Limpeza • Troca de peças</p>
+        <p class="cabecalho-sub-titulo" data-aos="fade-up" data-aos-delay="900">🔧 Upgrades • Limpeza • Troca de peças
+        </p>
         <p class="cabecalho-sub-titulo" data-aos="fade-up" data-aos-delay="1000">💾 Formatação • Otimização • BIOS</p>
     </main>
 
@@ -189,8 +192,18 @@
         class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp" data-aos="fade-up" data-aos-delay="200">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <script>
 
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" hidden>
+        <label for="theme-switch" class="toggle-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <div class="ball"></div>
+        </label>
+    </div>
+
+    <script>
+        // CAIXA DE MENSAGEM ENVIAR DIRETO PARA WHATSAPP
         function enviarWhats(event) {
             event.preventDefault()
 
@@ -269,6 +282,7 @@
         });
 
 
+
         // CONTADORES ANIMADOS (só rodam quando aparecem na tela)
         const counters = document.querySelectorAll('.counter');
         const speed = 97; // velocidade da animação (quanto menor, mais rápido)
@@ -306,7 +320,76 @@
             offset: 100        // começa um pouco antes de entrar na tela
         });
 
+
+        // MODO CLARO/ESCURO
+        const themeSwitch = document.getElementById('theme-switch');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeSwitch.checked = true;
+        }
+
+        themeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('light-theme');
+            const theme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+        });
+
+        // PARTÍCULAS ANIMADAS COM TSPARTICLES (fundo vivo!)
+        tsParticles.load("tsparticles", {
+            background: { color: { value: "transparent" } },
+            fpsLimit: 120,
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#4f46e5", "#7c3aed", "#a78bfa"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: "out"
+                },
+                links: {
+                    enable: true,
+                    distance: 150,
+                    color: "#4f46e5",
+                    opacity: 0.3,
+                    width: 1
+                }
+            },
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "repulse" },
+                    resize: true
+                }
+            },
+            detectRetina: true
+        });
+
+
+
+        // CURSOR PERSONALIZADO ROXO BRILHANTE
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .projetos-card, .toggle-label').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
     </script>
+
 </body>
 
 </html>
