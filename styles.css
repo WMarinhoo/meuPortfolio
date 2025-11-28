@@ -195,6 +195,9 @@ h1 {
 
 .campo-form {
     width: 100%;
+    max-width: 100%;
+    resize: none; /* impede estourar o layout */
+    box-sizing: border-box; /* impede ultrapassar o container */
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-style: 8px;
