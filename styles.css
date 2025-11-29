@@ -22,8 +22,7 @@ html {
 body {
     background-color: var(--escuro);
     color: var(--claro);
-    padding-top: 90px;
-    /* altura do seu menu */
+    padding-top: 90px;/* altura do seu menu */
 }
 
 /* No mobile, o menu é menor */
