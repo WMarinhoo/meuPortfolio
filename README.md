@@ -1,2 +1,2 @@
 Meu portfolio:
-https://download-tech.netlify.app/#inicio
+https://wmarinhoo.github.io/downloadTech/
