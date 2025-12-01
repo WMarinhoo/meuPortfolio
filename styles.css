@@ -6,8 +6,8 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    /* Deixar escrolagem do mouse de todo html mais suave */
+    scroll-behavior: smooth; /* Deixar escrolagem do mouse de todo html mais suave */
+    
 }
 
 :root {
