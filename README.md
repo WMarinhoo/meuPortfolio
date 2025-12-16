@@ -64,6 +64,7 @@ meuPortfolio/
 ```bash
 git clone https://github.com/WMarinhoo/meuPortfolio.git
 cd meuPortfolio
+```
 
 1. Abra o arquivo index.html no navegador:
 🌐 Online | Online
